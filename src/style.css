@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
+    font-family: Lato, sans-serif
+}
+
+h2 {
+    font-size: 5rem;
+    font-weight: 700;
+    padding: 3rem;
+    color: #3cbaf2;
+    background-color: #0ff;
+    background-color: rgba(0, 0, 0, .5)
+}
+
+.background {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url(../img/background.jpg);
+    background-size: cover
+}
+
+.countup {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-bottom: 10%;
+    color: #3cbaf2;
+    background-color: #0ff;
+    background-color: rgba(0, 0, 0, .5);
+    padding: 20px
+}
+
+.years,
+.days,
+.hours,
+.minutes,
+.seconds {
+    font-size: 3rem
+}
+
+@media screen and (max-width:767px) {
+    h2 {
+        font-size: 38px
+    }
+
+    .background {
+        background-image: url(../img/background_phone.png);
+        background-size: cover;
+        border-left: 0;
+        padding: 22px 0 0 0
+    }
+}
