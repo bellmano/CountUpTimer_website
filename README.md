@@ -9,4 +9,4 @@ This is simply a private lab to try out GitHub Pages. How the hosting works etc.
 The story behind the date given in the code and the background on the website is the last time the Swedish football team Hammarby won the Swedish Football League (Allsvenskan). Long time ago..... in other words they are shit! :poop:
 
 ## :gem: Website
-<a href="https://mattiasmalman.github.io/CountUpTimerWebsite_bajen-edition"><img src="img/example.png"></a>
+<a href="https://bellmano.github.io/CountUpTimerWebsite_bajen-edition"><img src="img/example.png"></a>
