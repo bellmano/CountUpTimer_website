@@ -5,37 +5,118 @@
 }
 
 body {
-    font-family: Lato, sans-serif
+    font-family: 'Kanit', sans-serif;
+    overflow: hidden;
 }
 
 h2 {
-    font-size: 5rem;
+    font-size: 2.5em;
     font-weight: 700;
     padding: 3rem;
     color: #3cbaf2;
     background-color: #0ff;
-    background-color: rgba(0, 0, 0, .5)
+    background-color: rgba(0, 0, 0, .5);
+    text-align: center;
+    white-space: nowrap;
+    margin-bottom: 20px;
+    font-family: 'Kanit', sans-serif;
 }
 
 .background {
-    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     align-items: center;
-    flex-direction: column;
     justify-content: center;
+    flex-direction: column;
     background-image: url(../img/background.jpg);
-    background-size: cover
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.optimized-background {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .countup {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 20px;
     text-align: center;
-    margin-bottom: 10%;
+    margin: 0 auto;
     color: #3cbaf2;
-    background-color: #0ff;
     background-color: rgba(0, 0, 0, .5);
-    padding: 20px
+    padding: 20px;
+    max-width: 90%;
+}
+
+@media (max-width: 768px) {
+    .countup {
+        gap: 10px;
+    }
+
+    .countup h3 {
+        font-size: 1.8em;
+    }
+
+    .countup .label {
+        font-size: 1.3em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .countup {
+        gap: 8px;
+    }
+
+    .countup h3 {
+        font-size: 1.6em;
+    }
+
+    .countup .label {
+        font-size: 1.2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+        padding: 1rem;
+    }
+}
+
+.countup .container-years,
+.countup .container-days,
+.countup .container-hours,
+.countup .container-minutes,
+.countup .container-seconds {
+    text-align: center;
+    margin: 5px;
+}
+
+.countup h3 {
+    font-size: 2em;
+    margin: 5px 0;
+    font-family: 'Kanit', sans-serif;
+}
+
+.countup .label {
+    font-size: 1.5em;
+    margin-top: 8px;
 }
 
 .years,
@@ -46,15 +127,35 @@ h2 {
     font-size: 3rem
 }
 
-@media screen and (max-width:767px) {
-    h2 {
-        font-size: 38px
+@media (min-width: 1024px) {
+    .background {
+        background-size: cover;
+        background-position: top;
     }
 
-    .background {
-        background-image: url(../img/background_phone.png);
-        background-size: cover;
-        border-left: 0;
-        padding: 22px 0 0 0
+    h2 {
+        font-size: 3.5em;
+        padding: 5rem;
+    }
+
+    .countup {
+        gap: 30px;
+        padding: 40px;
+    }
+
+    .countup h3 {
+        font-size: 3em;
+    }
+
+    .countup .label {
+        font-size: 2.5em;
+    }
+
+    .years,
+    .days,
+    .hours,
+    .minutes,
+    .seconds {
+        font-size: 5rem;
     }
 }
