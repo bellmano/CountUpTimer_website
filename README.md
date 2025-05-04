@@ -1,8 +1,8 @@
-## :stopwatch: Count Up Timer (bajen-Edition)
+# :stopwatch: Count Up Timer (bajen-Edition)
 
-> A simple website written in JavaScript, HTML & CSS that is counting up from the date that is specified in the code.
+> This is simply a private lab to try out the deployment of an website to a custom domain through GitHub Pages.
 
-This is simply a private lab to try out the deployment of an website to a custom domain through GitHub Pages.
+A simple website written in JavaScript, HTML & CSS that is counting up from the date that is specified in the code.
 
 ## :scroll: Introduction
 
