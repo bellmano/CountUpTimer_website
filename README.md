@@ -1,12 +1,12 @@
 # :stopwatch: Count Up Timer (bajen-Edition)
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=bellmano_CountUpTimer_website&metric=alert_status)](https://sonarcloud.io/summary/overall?id=bellmano_CountUpTimer_website)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=bellmano_CountUpTimer_website&metric=security_rating)](https://sonarcloud.io/summary/overall?id=bellmano_CountUpTimer_website)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=bellmano_CountUpTimer_website&metric=sqale_rating)](https://sonarcloud.io/summary/overall?id=bellmano_CountUpTimer_website)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=bellmano_CountUpTimer_website&metric=reliability_rating)](https://sonarcloud.io/summary/overall?id=bellmano_CountUpTimer_website)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=bellmano_CountUpTimer_website&metric=bugs)](https://sonarcloud.io/summary/overall?id=bellmano_CountUpTimer_website)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=bellmano_CountUpTimer_website&metric=vulnerabilities)](https://sonarcloud.io/summary/overall?id=bellmano_CountUpTimer_website)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=bellmano_CountUpTimer_website&metric=code_smells)](https://sonarcloud.io/summary/overall?id=bellmano_CountUpTimer_website)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=bellmano_CountUpTimer_website&metric=sqale_index)](https://sonarcloud.io/summary/overall?id=bellmano_CountUpTimer_website)
 
 A simple website written in JavaScript, HTML & CSS that is counting up from the date that is specified in the code.
 
