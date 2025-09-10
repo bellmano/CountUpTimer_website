@@ -1,3 +1,5 @@
+# :stopwatch: Count Up Timer (bajen-Edition)
+
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=bellmano_bajenguld.se&metric=alert_status&token=a7a941b2e4a0a6de523020fc8857281983af4624)](https://sonarcloud.io/summary/overall?id=bellmano_bajenguld.se)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=bellmano_bajenguld.se&metric=security_rating&token=a7a941b2e4a0a6de523020fc8857281983af4624)](https://sonarcloud.io/summary/overall?id=bellmano_bajenguld.se)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=bellmano_bajenguld.se&metric=sqale_rating&token=a7a941b2e4a0a6de523020fc8857281983af4624)](https://sonarcloud.io/summary/overall?id=bellmano_bajenguld.se)
@@ -6,11 +8,9 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=bellmano_bajenguld.se&metric=vulnerabilities&token=a7a941b2e4a0a6de523020fc8857281983af4624)](https://sonarcloud.io/summary/overall?id=bellmano_bajenguld.se)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=bellmano_bajenguld.se&metric=code_smells&token=a7a941b2e4a0a6de523020fc8857281983af4624)](https://sonarcloud.io/summary/overall?id=bellmano_bajenguld.se)
 
-# :stopwatch: Count Up Timer (bajen-Edition)
+A simple website written in JavaScript, HTML & CSS that is counting up from the date that is specified in the code.
 
 > This is simply a private lab to try out the deployment of an website to a custom domain through GitHub Pages.
-
-A simple website written in JavaScript, HTML & CSS that is counting up from the date that is specified in the code.
 
 ## :scroll: Introduction
 
