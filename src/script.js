@@ -60,3 +60,8 @@ function countUpFromTime(countFrom, id) {
   clearTimeout(countUpFromTime.interval);
   countUpFromTime.interval = setTimeout(function(){ countUpFromTime(countFrom, id); }, 1000);
 }
+
+// Export for Node.js/CommonJS (test environment)
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { countUpFromTime };
+}
