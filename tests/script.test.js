@@ -149,9 +149,9 @@ describe('countUpFromTime', () => {
 	});
 
 	test('updates DOM elements with correct values', () => {
-	jest.useFakeTimers();
-	jest.setSystemTime(new Date('Sep 13, 2025 11:59:00'));
-	const mockEl = createMockDOM();
+		jest.useFakeTimers();
+		jest.setSystemTime(new Date('Sep 13, 2025 11:59:00'));
+		const mockEl = createMockDOM();
 	global.document.getElementById = jest.fn(() => mockEl);
 	script.countUpFromTime('Sep 13, 2025 11:59:00', 'countup1');
 	expect(mockEl.years.innerHTML).toBe(0);
