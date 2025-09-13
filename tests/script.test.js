@@ -75,8 +75,18 @@ describe('countUpFromTime', () => {
 		global.document.getElementById = jest.fn(() => mockEl);
 		// Leap year: 2004
 		script.countUpFromTime('Jan 1, 2004 00:00:00', 'countup1');
-		// Should be 21 years, 0 days (from 2004 to 2025)
-		expect(mockEl.years.innerHTML).toBe(21);
+		// Should be years since 2004-01-01 to now
+		const start = new Date('Jan 1, 2004 00:00:00');
+		const now = new Date();
+		let years = now.getFullYear() - start.getFullYear();
+		// If current date is before Jan 1, subtract one year
+		if (
+			now.getMonth() < start.getMonth() ||
+			(now.getMonth() === start.getMonth() && now.getDate() < start.getDate())
+		) {
+			years--;
+		}
+		expect(Number(mockEl.years.innerHTML)).toBe(years);
 		expect(Number(mockEl.days.innerHTML)).toBeGreaterThanOrEqual(0);
 	});
 
