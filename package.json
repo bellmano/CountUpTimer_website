@@ -8,8 +8,7 @@
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "ts-node": "^10.9.2"
+    "jest-environment-jsdom": "^29.7.0"
   },
   "jest": {
     "testEnvironment": "jsdom",
@@ -17,11 +16,7 @@
       "src/script.js"
     ],
     "coverageDirectory": "coverage",
-    "coverageReporters": [
-      "text",
-      "lcov",
-      "html"
-    ],
+    "coverageReporters": ["text", "lcov", "html"],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/tests/"

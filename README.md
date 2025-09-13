@@ -22,7 +22,7 @@ To run the tests and view coverage:
 
 1. Install the required dev dependency:
 	```powershell
-	npm install --save-dev ts-node
+	npm install
 	```
 2. Run the test coverage script:
 	```powershell
