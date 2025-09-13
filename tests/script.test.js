@@ -76,11 +76,16 @@ describe('countUpFromTime', () => {
 			script.countUpFromTime('not a date', 'countup1');
 		}).not.toThrow();
 		// All values should be zero or NaN
-		expect(Number(mockEl.years.innerHTML)).toBeGreaterThanOrEqual(0);
-		expect(Number(mockEl.days.innerHTML)).toBeGreaterThanOrEqual(0);
-		expect(Number(mockEl.hours.innerHTML)).toBeGreaterThanOrEqual(0);
-		expect(Number(mockEl.minutes.innerHTML)).toBeGreaterThanOrEqual(0);
-		expect(Number(mockEl.seconds.innerHTML)).toBeGreaterThanOrEqual(0);
+		const yearsVal = Number(mockEl.years.innerHTML);
+		const daysVal = Number(mockEl.days.innerHTML);
+		const hoursVal = Number(mockEl.hours.innerHTML);
+		const minutesVal = Number(mockEl.minutes.innerHTML);
+		const secondsVal = Number(mockEl.seconds.innerHTML);
+		expect(yearsVal === 0 || Number.isNaN(yearsVal)).toBe(true);
+		expect(daysVal === 0 || Number.isNaN(daysVal)).toBe(true);
+		expect(hoursVal === 0 || Number.isNaN(hoursVal)).toBe(true);
+		expect(minutesVal === 0 || Number.isNaN(minutesVal)).toBe(true);
+		expect(secondsVal === 0 || Number.isNaN(secondsVal)).toBe(true);
 		jest.useRealTimers();
 	});
 
