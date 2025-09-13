@@ -59,6 +59,43 @@ describe('countUpFromTime', () => {
 		global.setTimeout = originalSetTimeout;
 	});
 
+	test('handles invalid date input gracefully', () => {
+		jest.useFakeTimers();
+		jest.setSystemTime(new Date('Sep 13, 2025 12:00:00'));
+		const mockEl = createMockDOM();
+		global.document.getElementById = jest.fn(() => mockEl);
+		expect(() => {
+			script.countUpFromTime('not a date', 'countup1');
+		}).not.toThrow();
+		// All values should be zero or NaN
+		expect(Number(mockEl.years.innerHTML)).toBeGreaterThanOrEqual(0);
+		expect(Number(mockEl.days.innerHTML)).toBeGreaterThanOrEqual(0);
+		expect(Number(mockEl.hours.innerHTML)).toBeGreaterThanOrEqual(0);
+		expect(Number(mockEl.minutes.innerHTML)).toBeGreaterThanOrEqual(0);
+		expect(Number(mockEl.seconds.innerHTML)).toBeGreaterThanOrEqual(0);
+		jest.useRealTimers();
+	});
+
+	test('handles missing DOM elements gracefully', () => {
+		jest.useFakeTimers();
+		jest.setSystemTime(new Date('Sep 13, 2025 12:00:00'));
+		// getElementById returns null
+		global.document.getElementById = jest.fn(() => null);
+		expect(() => {
+			script.countUpFromTime('Sep 13, 2025 12:00:00', 'countup1');
+		}).not.toThrow();
+		jest.useRealTimers();
+	});
+
+	test('calls clearTimeout when resetting interval', () => {
+		const mockEl = createMockDOM();
+		global.document.getElementById = jest.fn(() => mockEl);
+		const clearTimeoutSpy = jest.spyOn(global, 'clearTimeout');
+		script.countUpFromTime('Sep 13, 2025 11:59:00', 'countup1');
+		expect(clearTimeoutSpy).toHaveBeenCalled();
+		clearTimeoutSpy.mockRestore();
+	});
+
 	test('calculates years, days, hours, minutes, seconds correctly for normal date', () => {
 		const mockEl = createMockDOM();
 		global.document.getElementById = jest.fn(() => mockEl);
@@ -112,14 +149,17 @@ describe('countUpFromTime', () => {
 	});
 
 	test('updates DOM elements with correct values', () => {
-		const mockEl = createMockDOM();
-		global.document.getElementById = jest.fn(() => mockEl);
-		script.countUpFromTime('Sep 13, 2025 11:59:00', 'countup1');
-		expect(mockEl.years.innerHTML).toBe(0);
-		expect(Number(mockEl.days.innerHTML)).toBeGreaterThanOrEqual(0);
-		expect(Number(mockEl.hours.innerHTML)).toBeGreaterThanOrEqual(0);
-		expect(Number(mockEl.minutes.innerHTML)).toBeGreaterThanOrEqual(0);
-		expect(Number(mockEl.seconds.innerHTML)).toBeGreaterThanOrEqual(0);
+	jest.useFakeTimers();
+	jest.setSystemTime(new Date('Sep 13, 2025 11:59:00'));
+	const mockEl = createMockDOM();
+	global.document.getElementById = jest.fn(() => mockEl);
+	script.countUpFromTime('Sep 13, 2025 11:59:00', 'countup1');
+	expect(mockEl.years.innerHTML).toBe(0);
+	expect(Number(mockEl.days.innerHTML)).toBe(0);
+	expect(Number(mockEl.hours.innerHTML)).toBe(0);
+	expect(Number(mockEl.minutes.innerHTML)).toBe(0);
+	expect(Number(mockEl.seconds.innerHTML)).toBe(0);
+	jest.useRealTimers();
 	});
 
 	test('clears previous interval and sets new one', () => {

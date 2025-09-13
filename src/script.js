@@ -7,52 +7,63 @@ function countUpFromTime(countFrom, id) {
   const countFromDate = new Date(countFrom);
   const now = new Date();
 
-  // Calculate timezone offsets for both dates
-  const countFromOffset = countFromDate.getTimezoneOffset() * 60000; // Offset in milliseconds
-  const nowOffset = now.getTimezoneOffset() * 60000;
+  // Validate date
+  const isValidDate = !isNaN(countFromDate.getTime());
 
-  // Adjust countFrom time to account for its timezone offset
-  const stockholmTime = countFromDate.getTime() - countFromOffset;
-
-  // Adjust current time to account for its timezone offset
-  const stockholmNow = now.getTime() - nowOffset;
-
-  const timeDifference = stockholmNow - stockholmTime;
-
-  const secondsInADay = 60 * 60 * 1000 * 24;
-  const secondsInAHour = 60 * 60 * 1000;
-
-  // Calculate the exact number of days between the two dates using Date objects
-  const totalDays = Math.floor((now - countFromDate) / secondsInADay);
-
-  // Calculate years and remaining days, accounting for leap years and DST
-  let years = 0;
-  let remainingDays = totalDays;
-  for (let year = countFromDate.getFullYear(); year < now.getFullYear(); year++) {
-    const isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
-    const daysInYear = isLeapYear ? 366 : 365;
-    if (remainingDays >= daysInYear) {
-      years++;
-      remainingDays -= daysInYear;
-    } else {
-      break;
-    }
+  // Get DOM element
+  const idEl = document.getElementById(id);
+  if (!idEl) {
+    // Gracefully exit if DOM element is missing
+    return;
   }
 
-  // Adjust remainingDays to account for DST changes
-  const adjustedDate = new Date(countFromDate);
-  adjustedDate.setFullYear(countFromDate.getFullYear() + years);
-  const exactDays = Math.floor((now - adjustedDate) / secondsInADay);
-  remainingDays = exactDays;
+  let years = 0, remainingDays = 0, hours = 0, minutes = 0, seconds = 0;
+  if (isValidDate) {
+    // Calculate timezone offsets for both dates
+    const countFromOffset = countFromDate.getTimezoneOffset() * 60000; // Offset in milliseconds
+    const nowOffset = now.getTimezoneOffset() * 60000;
 
-  const hours = Math.floor((timeDifference % secondsInADay) / secondsInAHour);
-  const minutes = Math.floor(((timeDifference % secondsInADay) % secondsInAHour) / (60 * 1000));
-  const seconds = Math.floor((((timeDifference % secondsInADay) % secondsInAHour) % (60 * 1000)) / 1000);
+    // Adjust countFrom time to account for its timezone offset
+    const stockholmTime = countFromDate.getTime() - countFromOffset;
 
-  const idEl = document.getElementById(id);
+    // Adjust current time to account for its timezone offset
+    const stockholmNow = now.getTime() - nowOffset;
+
+    const timeDifference = stockholmNow - stockholmTime;
+
+    const msInADay = 60 * 60 * 1000 * 24;
+    const msInAnHour = 60 * 60 * 1000;
+
+    // Calculate the exact number of days between the two dates using Date objects
+    const totalDays = Math.floor((now - countFromDate) / msInADay);
+
+    // Calculate years and remaining days, accounting for leap years and DST
+    years = 0;
+    remainingDays = totalDays;
+    for (let year = countFromDate.getFullYear(); year < now.getFullYear(); year++) {
+      const isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+      const daysInYear = isLeapYear ? 366 : 365;
+      if (remainingDays >= daysInYear) {
+        years++;
+        remainingDays -= daysInYear;
+      } else {
+        break;
+      }
+    }
+
+    // Adjust remainingDays to account for DST changes
+    const adjustedDate = new Date(countFromDate);
+    adjustedDate.setFullYear(countFromDate.getFullYear() + years);
+    const exactDays = Math.floor((now - adjustedDate) / msInADay);
+    remainingDays = exactDays;
+
+    hours = Math.floor((timeDifference % msInADay) / msInAnHour);
+    minutes = Math.floor(((timeDifference % msInADay) % msInAnHour) / (60 * 1000));
+    seconds = Math.floor((((timeDifference % msInADay) % msInAnHour) % (60 * 1000)) / 1000);
+  }
 
   idEl.getElementsByClassName('years')[0].innerHTML = years;
-  idEl.getElementsByClassName('days')[0].innerHTML = remainingDays; // Use remainingDays
+  idEl.getElementsByClassName('days')[0].innerHTML = remainingDays;
   idEl.getElementsByClassName('hours')[0].innerHTML = hours;
   idEl.getElementsByClassName('minutes')[0].innerHTML = minutes;
   idEl.getElementsByClassName('seconds')[0].innerHTML = seconds;
