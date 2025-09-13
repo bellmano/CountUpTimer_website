@@ -5,6 +5,14 @@ describe('Main Script Tests', () => {
 		expect(typeof exported.countUpFromTime).toBe('function');
 	});
 });
+
+describe('module.exports coverage', () => {
+  test('module.exports is set correctly', () => {
+    const exported = require('../src/script.js');
+    expect(exported.countUpFromTime).toBeDefined();
+    expect(typeof exported.countUpFromTime).toBe('function');
+  });
+});
 // Mock document.getElementById and DOM structure
 function createMockDOM() {
 	const years = { innerHTML: null };

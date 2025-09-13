@@ -38,7 +38,6 @@ function countUpFromTime(countFrom, id) {
     const totalDays = Math.floor((now - countFromDate) / msInADay);
 
     // Calculate years and remaining days, accounting for leap years and DST
-    years = 0;
     remainingDays = totalDays;
     for (let year = countFromDate.getFullYear(); year < now.getFullYear(); year++) {
       const isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
@@ -73,6 +72,7 @@ function countUpFromTime(countFrom, id) {
 }
 
 // Export for Node.js/CommonJS (test environment)
+/* istanbul ignore next */
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { countUpFromTime };
 }
