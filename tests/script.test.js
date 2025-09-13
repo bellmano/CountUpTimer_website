@@ -107,11 +107,14 @@ describe('countUpFromTime', () => {
 	});
 
 	test('handles edge case: same date', () => {
+		jest.useFakeTimers();
+		jest.setSystemTime(new Date('Sep 13, 2025 12:00:00'));
 		const mockEl = createMockDOM();
 		global.document.getElementById = jest.fn(() => mockEl);
 		script.countUpFromTime('Sep 13, 2025 12:00:00', 'countup1');
 		expect(mockEl.years.innerHTML).toBe(0);
 		expect(mockEl.days.innerHTML).toBe(0);
+		jest.useRealTimers();
 	});
 });
 
