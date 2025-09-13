@@ -61,8 +61,17 @@ describe('countUpFromTime', () => {
 		// Use a fixed date for now
 		// Use real Date objects
 		script.countUpFromTime('Oct 21, 2001 17:00:00', 'countup1');
-		// Years since 2001-10-21 to 2025-09-13 is 23 years, 327 days
-		expect(Number(mockEl.years.innerHTML)).toBeGreaterThanOrEqual(23);
+		// Years since 2001-10-21 to now
+		const start = new Date('Oct 21, 2001 17:00:00');
+		const now = new Date();
+		let years = now.getFullYear() - start.getFullYear();
+		if (
+			now.getMonth() < start.getMonth() ||
+			(now.getMonth() === start.getMonth() && now.getDate() < start.getDate())
+		) {
+			years--;
+		}
+		expect(Number(mockEl.years.innerHTML)).toBeGreaterThanOrEqual(years);
 		expect(Number(mockEl.days.innerHTML)).toBeGreaterThanOrEqual(0);
 		expect(Number(mockEl.hours.innerHTML)).toBeGreaterThanOrEqual(0);
 		expect(Number(mockEl.minutes.innerHTML)).toBeGreaterThanOrEqual(0);
