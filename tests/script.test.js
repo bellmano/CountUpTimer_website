@@ -4,14 +4,22 @@ describe('Main Script Tests', () => {
 		expect(exported).toHaveProperty('countUpFromTime');
 		expect(typeof exported.countUpFromTime).toBe('function');
 	});
-});
-
-describe('module.exports coverage', () => {
-  test('module.exports is set correctly', () => {
-    const exported = require('../src/script.js');
-    expect(exported.countUpFromTime).toBeDefined();
-    expect(typeof exported.countUpFromTime).toBe('function');
-  });
+	test('exports handleWindowOnload for Node.js', () => {
+		const exported = require('../src/script.js');
+		expect(exported).toHaveProperty('handleWindowOnload');
+		expect(typeof exported.handleWindowOnload).toBe('function');
+	});
+	test('window.onload is covered', () => {
+		global.window = global.window || {};
+		global.window.onload = require('../src/script.js').handleWindowOnload;
+		expect(typeof global.window.onload).toBe('function');
+		global.window.onload();
+	});
+	test('handleWindowOnload is covered', () => {
+		const { handleWindowOnload } = require('../src/script.js');
+		expect(typeof handleWindowOnload).toBe('function');
+		handleWindowOnload();
+	});
 });
 // Mock document.getElementById and DOM structure
 function createMockDOM() {

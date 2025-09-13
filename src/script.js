@@ -1,7 +1,9 @@
-window.onload = function() {
+function handleWindowOnload() {
   // Set time and date where the timer should count from
   countUpFromTime("Oct 21, 2001 17:00:00", 'countup1');
-};
+}
+
+window.onload = handleWindowOnload;
 
 function countUpFromTime(countFrom, id) {
   const countFromDate = new Date(countFrom);
@@ -68,11 +70,11 @@ function countUpFromTime(countFrom, id) {
   idEl.getElementsByClassName('seconds')[0].innerHTML = seconds;
 
   clearTimeout(countUpFromTime.interval);
-  countUpFromTime.interval = setTimeout(function(){ countUpFromTime(countFrom, id); }, 1000);
+  countUpFromTime.interval = setTimeout(countUpFromTime, 1000, countFrom, id);
 }
 
 // Export for Node.js/CommonJS (test environment)
 /* istanbul ignore next */
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { countUpFromTime };
+  module.exports = { countUpFromTime, handleWindowOnload };
 }
