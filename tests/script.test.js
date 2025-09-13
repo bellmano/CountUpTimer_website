@@ -39,8 +39,12 @@ describe('countUpFromTime', () => {
 	beforeEach(() => {
 		// Mock document.getElementById
 		originalGetElementById = global.document.getElementById;
+		const domMap = {};
 		global.document.getElementById = jest.fn((id) => {
-			return createMockDOM();
+			if (!domMap[id]) {
+				domMap[id] = createMockDOM();
+			}
+			return domMap[id];
 		});
 		// Mock setTimeout
 		originalSetTimeout = global.setTimeout;
