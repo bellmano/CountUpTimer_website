@@ -10,7 +10,7 @@ function countUpFromTime(countFrom, id) {
   const now = new Date();
 
   // Validate date
-  const isValidDate = !isNaN(countFromDate.getTime());
+  const isValidDate = !Number.isNaN(countFromDate.getTime());
 
   // Get DOM element
   const idEl = document.getElementById(id);
