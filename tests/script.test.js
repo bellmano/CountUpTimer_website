@@ -169,6 +169,20 @@ describe('countUpFromTime', () => {
 		expect(Number(mockEl.hours.innerHTML)).toBeGreaterThanOrEqual(0);
 	});
 
+	test('covers for-loop else branch (break) when remainingDays < daysInYear', () => {
+		// Freeze time to a known date so the loop runs exactly once and hits the else branch
+		jest.useFakeTimers();
+		jest.setSystemTime(new Date('Nov 01, 2025 12:00:00'));
+		const mockEl = createMockDOM();
+		global.document.getElementById = jest.fn(() => mockEl);
+		// Choose a date in the previous year but with remaining days less than a full year
+		script.countUpFromTime('Dec 31, 2024 00:00:00', 'countup1');
+		// The function should have written numeric values to the DOM
+		expect(Number(mockEl.years.innerHTML)).toBeGreaterThanOrEqual(0);
+		expect(Number(mockEl.days.innerHTML)).toBeGreaterThanOrEqual(0);
+		jest.useRealTimers();
+	});
+
 	test('updates DOM elements with correct values', () => {
 		jest.useFakeTimers();
 		jest.setSystemTime(new Date('Sep 13, 2025 11:59:00'));
