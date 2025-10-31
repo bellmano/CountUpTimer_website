@@ -4,9 +4,21 @@
     box-sizing: border-box
 }
 
+/* Ensure HTML and body elements handle the full viewport properly on mobile */
+html {
+    height: 100%;
+    height: 100dvh; /* Dynamic viewport height for iOS 15+ */
+    background-color: #000; /* Fallback color to match background */
+}
+
 body {
     font-family: 'Kanit', sans-serif;
     overflow: hidden;
+    /* Ensure body fills the entire viewport on iOS */
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for iOS 15+ */
+    margin: 0;
+    padding: 0;
 }
 
 h2 {
@@ -27,7 +39,9 @@ h2 {
     top: 0;
     left: 0;
     width: 100vw;
+    width: 100dvw; /* Dynamic viewport width */
     height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for iOS 15+ */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,10 +49,15 @@ h2 {
     background-image: url(../img/background.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: top;
+    background-position: center;
     margin: 0;
     padding: 0;
     overflow: hidden;
+    /* Handle safe areas for devices with notches/dynamic island */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
 .optimized-background {
